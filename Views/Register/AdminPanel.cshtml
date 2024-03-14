@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<registerLogin.Models.RegisterLogin>
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+</style>
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Surname</th>
+			<th>Email</th>
+			<!-- Diğer sütunları ekleyin -->
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Name</td>
+				<td>@item.Surname</td>
+				<td>@item.Mail</td>
+				<td>
+					<button type="button" class="OpenBlock" data-id="@item.Id" @(!item.IsBlocked ? "disabled" : string.Empty)> Blokeyi Kaldır</button>
+				</td>
+				<td>
+					<button type="button" class="deleteUser" data-id="@item.Id" > Kullanıcıyı Kaldır</button>
+				</td>
+
+				@* <td>@item.Password</td> *@
+			</tr>
+		}
+	</tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/AdminPanel.js"></script>
